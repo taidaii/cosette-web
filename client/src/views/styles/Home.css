@@ -1,0 +1,19 @@
+.result {
+  border: 1px solid Grey;
+  height: 100%;
+  text-align: center;
+}
+
+.btn-row {
+  margin: 50px 0px 30px 0px;
+}
+
+.home-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
+  margin-left: auto;
+}
