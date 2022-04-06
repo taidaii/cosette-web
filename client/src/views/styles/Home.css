@@ -5,7 +5,7 @@
 }
 
 .btn-row {
-  margin: 50px 0px 30px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
 .home-center {
@@ -15,5 +15,5 @@
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 
-  margin-left: auto;
+  margin-top: 20px;
 }

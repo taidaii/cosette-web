@@ -7,7 +7,7 @@ import Logo from "../logo-cosette.svg"
 export default function() {
   return (
     <>
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" style={{marginBottom: "20px"}}>
       <Container fluid>
         <Navbar.Brand href="/">
         <img
