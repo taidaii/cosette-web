@@ -22,8 +22,8 @@ export default function () {
           onSelect={k=>setTabKey(k)}
           className="mb-3"
         >
-          <Tab eventKey="ta" title="TA's View"></Tab>
-          <Tab eventKey="student" title="Student's View">
+          <Tab eventKey="ta" title="Instructor View"></Tab>
+          <Tab eventKey="student" title="Student View">
           </Tab>
         </Tabs>
 
@@ -56,11 +56,11 @@ export default function () {
         </Row>
         <Row>
           <Col style={{width: "20%"}}>
-            <Stack gap={4}>
+            <Stack gap={3}>
               <CodeMirror
                 className="bg-light border"
                 value="CREATE TABLE hello_world {};"
-                height={tabKey == 'ta' ? "190px" : "298px"}
+                height={tabKey == 'ta' ? "180px" : "280px"}
                 extensions={[sql({})]}
                 onChange={(value, viewUpdate) => {
                   console.log('value:', value);
@@ -71,7 +71,7 @@ export default function () {
                 <CodeMirror
                 className="bg-light border"
                   value="SELECT * FROM hello_world;"
-                  height="190px"
+                  height="180px"
                   extensions={[sql({})]}
                   onChange={(value, viewUpdate) => {
                     console.log('value:', value);
@@ -82,7 +82,7 @@ export default function () {
               <CodeMirror
                 className="bg-light border"
                 value="SELECT * FROM hello_world;"
-                height={tabKey == 'ta' ? "190px" : "298px"}
+                height={tabKey == 'ta' ? "180px" : "280px"}
                 extensions={[sql({})]}
                 onChange={(value, viewUpdate) => {
                   console.log('value:', value);
