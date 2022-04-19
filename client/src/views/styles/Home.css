@@ -9,11 +9,22 @@
 }
 
 .home-center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+  margin: 2vh 0 5vh 0;
+  width: 80%;
+}
 
-  margin-top: 25px;
+.editor-area {
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 600px;
+}
+
+.editor {
+  flex-grow: 1;
+  border: 1px solid #ddd;
+}
+
+.cm-editor.cm-focused {
+  outline: none !important;
 }

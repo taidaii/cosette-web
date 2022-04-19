@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Hello world",
+    "createTableStatement": "CREATE TABLE hello_world {hello INT};",
+    "taSubmission": "SELECT * FROM hello_world;",
+    "studentSubmission": "SELECT * FROM hello_world;"
+  },
+  {
+    "name": "Inequivalent example",
+    "createTableStatement": "CREATE TABLE indiv_sample_nyc(\n cmte_id INT,\n transaction_amt INT,\n name VARCHAR(10),\n str_name VARCHAR(10)\n );",
+    "taSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 1 AND name LIKE \"%test%\" AND str_name LIKE \"%test3%\";",
+    "studentSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 2 AND name LIKE \"%test%\" AND str_name LIKE \"%test3%\";"
+  }
+]

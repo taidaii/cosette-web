@@ -2,12 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Home from "./views/Home";
+import About from './views/About';
+import Tutorial from './views/Tutorial';
+import TmplManage from './views/TmplManage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="tutorial" element={<Tutorial />} />
+          <Route path="manage-templates" element={<TmplManage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

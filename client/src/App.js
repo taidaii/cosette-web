@@ -1,23 +1,14 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./views/Home";
-import About from './views/About';
-import Tutorial from './views/Tutorial';
+import {Outlet} from "react-router-dom";
 import Header from './components/Header';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+function App(props) {
   return (
     <>
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/tutorial" element={<Tutorial />} />
-        </Routes>
-      </BrowserRouter>
+      <Outlet />
     </>
   );
 }

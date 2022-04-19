@@ -6,20 +6,32 @@ import { sql } from '@codemirror/lang-sql';
 import { useState } from 'react';
 import axios from 'axios';
 import ReactHtmlParser from 'html-react-parser'; 
+import { useNavigate } from 'react-router-dom';
 
 import "./styles/Home.css"
+import templates from '../utils/data/templates';
 
-export default function () {
+export default function Home() {
 
   const [isLoading, setLoading] = useState(false);
-  const [tabKey, setTabKey] = useState('ta');
-  const [createTableStatement, setCreateTableStatement] = useState("CREATE TABLE indiv_sample_nyc(\n cmte_id INT,\n transaction_amt INT,\n name VARCHAR(10),\n str_name VARCHAR(10)\n );");
-  const [taSubmission, setTaSubmission] = useState("SELECT * FROM indiv_sample_nyc WHERE cmte_id = 1 AND name LIKE '%test%' AND str_name LIKE '%test3%';");
-  const [studentSubmission, setStudentSubmission] = useState("SELECT * FROM indiv_sample_nyc WHERE cmte_id = 2 AND name LIKE '%test%' AND str_name LIKE '%test3%';");
+  const [tabKey, setTabKey] = useState('instructor');
+  const [tmplKey, setTmplKey] = useState(0);
+  const [createTableStatement, setCreateTableStatement] = useState(templates[tmplKey].createTableStatement);
+  const [taSubmission, setTaSubmission] = useState(templates[tmplKey].taSubmission);
+  const [studentSubmission, setStudentSubmission] = useState(templates[tmplKey].studentSubmission);
   const [resultStatus, setResultStatus] = useState("");
   const [resultLog, setResultLog] = useState("");
   const [resultTableCols, setResultTableCols] = useState("");
   const [resultTableRows, setResultTableRows] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleTmplSelect = (k) => {
+    setTmplKey(k);
+    setCreateTableStatement(templates[k].createTableStatement);
+    setTaSubmission(templates[k].taSubmission);
+    setStudentSubmission(templates[k].studentSubmission);
+  }
 
   const handleClick = async() => {
     setLoading(true);
@@ -71,9 +83,9 @@ export default function () {
         <Tabs
           activeKey={tabKey}
           onSelect={k=>setTabKey(k)}
-          className="mb-3"
+          className="mb-4"
         >
-          <Tab eventKey="ta" title="Instructor View"></Tab>
+          <Tab eventKey="instructor" title="Instructor View"></Tab>
           <Tab eventKey="student" title="Student View">
           </Tab>
         </Tabs>
@@ -81,12 +93,19 @@ export default function () {
         <Row className='btn-row'>
           <Col>
             <Stack direction="horizontal" gap={2}>
-              <Dropdown>
+              <Dropdown
+                onSelect={handleTmplSelect}
+              >
                 <Dropdown.Toggle id="dropdown-basic" variant="outline-primary">
-                  Template
+                  {templates[tmplKey].name}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Hello World</Dropdown.Item>
+                  {
+                    templates.map( 
+                      (t, i) => 
+                      <Dropdown.Item key={i} eventKey={i} > {t.name} </Dropdown.Item>
+                    )
+                  }
                 </Dropdown.Menu>
               </Dropdown>
             
@@ -94,7 +113,7 @@ export default function () {
                 Upload
               </Button>
             
-              <Button variant="link">
+              <Button variant="link" onClick={() => navigate("/manage-templates")} >
                 Manage
               </Button>
             </Stack>
@@ -107,10 +126,11 @@ export default function () {
         </Row>
         <Row>
           <Col style={{width: "20%"}}>
-            <Stack gap={3}>
+            <div className="editor-area">
               <CodeMirror
-                className="bg-light border"
-                height={tabKey == 'ta' ? "190px" : "298px"}
+                className="editor"
+                height='100%'
+                style={{"maxHeight": tabKey === "instructor" ? "192px" : "295px"}}
                 value={createTableStatement}
                 extensions={[sql({})]}
                 onChange={(value, viewUpdate) => {
@@ -119,22 +139,23 @@ export default function () {
                 }}
               />
               {
-                tabKey == 'ta' ?
+                tabKey === 'instructor' &&
                 <CodeMirror
-                className="bg-light border"
+                  className="editor"
+                  style={{"maxHeight": "192px"}}
+                  height='100%'
                   value={taSubmission}
-                  height="190px"
                   extensions={[sql({})]}
                   onChange={(value, viewUpdate) => {
                     console.log('value:', value);
                     setTaSubmission(value);
                   }}
                 />
-                : null
               }
               <CodeMirror
-                className="bg-light border"
-                height={tabKey == 'ta' ? "190px" : "298px"}
+                className="editor"
+                height='100%'
+                style={{"maxHeight": tabKey === "instructor" ? "192px" : "295px"}}
                 value={studentSubmission}
                 extensions={[sql({})]}
                 onChange={(value, viewUpdate) => {
@@ -142,7 +163,7 @@ export default function () {
                   setStudentSubmission(value);
                 }}
               />
-            </Stack>
+            </div>
           </Col>
           <Col>
             <div className='result'>
