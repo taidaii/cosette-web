@@ -7,8 +7,8 @@
   },
   {
     "name": "Inequivalent example",
-    "createTableStatement": "CREATE TABLE indiv_sample_nyc(\n cmte_id INT,\n transaction_amt INT,\n name VARCHAR(10),\n str_name VARCHAR(10)\n );",
-    "taSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 1 AND name LIKE \"%test%\" AND str_name LIKE \"%test3%\";",
-    "studentSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 2 AND name LIKE \"%test%\" AND str_name LIKE \"%test3%\";"
+    "createTableStatement": "CREATE TABLE indiv_sample_nyc(\n cmte_id INT,\n transaction_amt INT,\n name VARCHAR(10),\n str_name VARCHAR(10)\n );\n\nCREATE TABLE indiv_sample_nyc2(\n cmte_idt INT,\n transaction_amtt INT,\n namet VARCHAR(10),\n str_namet VARCHAR(10)\n );",
+    "taSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 1 AND name LIKE '%test%' AND str_name LIKE '%test3%';",
+    "studentSubmission": "SELECT * FROM indiv_sample_nyc WHERE cmte_id = 2 AND name LIKE '%test%' AND str_name LIKE '%test3%';"
   }
 ]
