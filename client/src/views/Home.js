@@ -3,6 +3,7 @@ import { Container, Row, Col, Dropdown, Stack, Spinner, Table, Tab, Tabs } from 
 import Button from 'react-bootstrap/Button'
 import CodeMirror from '@uiw/react-codemirror';
 import { sql } from '@codemirror/lang-sql';
+import { EditorView } from "@codemirror/view";
 import { useState } from 'react';
 import axios from 'axios';
 import ReactHtmlParser from 'html-react-parser'; 
@@ -109,12 +110,8 @@ export default function Home() {
                 </Dropdown.Menu>
               </Dropdown>
             
-              <Button variant="outline-primary">
-                Upload
-              </Button>
-            
-              <Button variant="link" onClick={() => navigate("/manage-templates")} >
-                Manage
+              <Button variant="link" onClick={() => navigate("/templates")} >
+                Manage Templates
               </Button>
             </Stack>
           </Col>
@@ -125,14 +122,13 @@ export default function Home() {
           </Col>
         </Row>
         <Row>
-          <Col style={{width: "20%"}}>
-            <div className="editor-area">
+          <Col className="editor-area">
               <CodeMirror
                 className="editor"
                 height='100%'
                 style={{"maxHeight": tabKey === "instructor" ? "192px" : "295px"}}
                 value={createTableStatement}
-                extensions={[sql({})]}
+                extensions={[sql({}), EditorView.lineWrapping]}
                 onChange={(value, viewUpdate) => {
                   console.log('value:', value);
                   setCreateTableStatement(value);
@@ -145,7 +141,7 @@ export default function Home() {
                   style={{"maxHeight": "192px"}}
                   height='100%'
                   value={taSubmission}
-                  extensions={[sql({})]}
+                  extensions={[sql({}), EditorView.lineWrapping]}
                   onChange={(value, viewUpdate) => {
                     console.log('value:', value);
                     setTaSubmission(value);
@@ -157,13 +153,12 @@ export default function Home() {
                 height='100%'
                 style={{"maxHeight": tabKey === "instructor" ? "192px" : "295px"}}
                 value={studentSubmission}
-                extensions={[sql({})]}
+                extensions={[sql({}), EditorView.lineWrapping]}
                 onChange={(value, viewUpdate) => {
                   console.log('value:', value);
                   setStudentSubmission(value);
                 }}
               />
-            </div>
           </Col>
           <Col>
             <div className='result'>
