@@ -1,5 +1,17 @@
 [
   {
+    "name": "QuestionA-1",
+    "createTableStatement": "CREATE TABLE Customers(\n id INT,\n name VARCHAR(10)\n );\n\nCREATE TABLE Orders(\n id INT,\n customerId INT,\n price INT\n );",
+    "taSubmission": "SELECT * FROM Customers WHERE name LIKE '%Smith';",
+    "studentSubmission": "SELECT * FROM Customers WHERE name LIKE '%Smith';"
+  },
+  {
+    "name": "QuestionA-2",
+    "createTableStatement": "CREATE TABLE Customers(\n id INT,\n name VARCHAR(10)\n );\n\nCREATE TABLE Orders(\n id INT,\n customerId INT,\n price INT\n );",
+    "taSubmission": "SELECT * FROM Customers LEFT JOIN Orders on Customers.id = Orders.customerId WHERE Orders.price > 2;",
+    "studentSubmission": "SELECT * FROM Customers LEFT JOIN Orders on Customers.id = Orders.customerId WHERE Orders.price > 2;"
+  },
+  {
     "name": "Hello world",
     "createTableStatement": "CREATE TABLE hello_world {hello INT};",
     "taSubmission": "SELECT * FROM hello_world;",
