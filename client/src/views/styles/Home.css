@@ -1,17 +1,17 @@
 .result {
-  border: 1px solid Grey;
+  border: 1px solid #ddd;
+  height: 100%;
   text-align: center;
 
   overflow: scroll;
-  height: 80vh;
 }
 
 .btn-row {
-  margin: 0px 0px 20px 0px;
+  margin-bottom: 2vh;
 }
 
 .home-center {
-  margin: 2vh 0 5vh 0;
+  margin: 2vh 0 11vh 0;
   width: 80%;
 }
 

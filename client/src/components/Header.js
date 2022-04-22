@@ -22,7 +22,7 @@ export default function Header(props) {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" style={{alignSelf: "stretch"}}>
+      <Navbar bg="light" sticky="top" expand="lg" style={{alignSelf: "stretch", zIndex: 1}}>
         <Container fluid>
           <Navbar.Brand href="#" onClick={handleClickBrand}>
             <img alt="logo" src={Logo} className="align-top" style={logoStyle} />
@@ -30,7 +30,13 @@ export default function Header(props) {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav >
+            <Nav>
+              <Nav.Link onClick={() => navigate("/")}> 
+                Home
+              </Nav.Link>
+              <Nav.Link onClick={() => navigate("/templates")}>
+                Templates
+              </Nav.Link>
               <Nav.Link onClick={() => navigate("/tutorial")}>
                 Tutorial
               </Nav.Link>

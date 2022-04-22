@@ -1,0 +1,23 @@
+.tmpl-container {
+  margin-top: 5vh;
+  width: 80%;
+}
+
+.editor-area {
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 600px;
+  max-width: 50%;
+}
+
+.editor {
+  flex-grow: 1;
+  border: 1px solid #ddd;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

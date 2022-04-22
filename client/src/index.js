@@ -16,7 +16,7 @@ ReactDOM.render(
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="tutorial" element={<Tutorial />} />
-          <Route path="manage-templates" element={<TmplManage />} />
+          <Route path="templates" element={<TmplManage />} />
         </Route>
       </Routes>
     </BrowserRouter>
