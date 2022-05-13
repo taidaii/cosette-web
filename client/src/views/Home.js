@@ -37,11 +37,13 @@ export default function Home() {
     setResultStatus("");
     setResultLog("");
     setResultTables([]);
+    const taSubmissionMod = taSubmission.replaceAll("\"", "\'");
+    const studentSubmissionMod = studentSubmission.replaceAll("\"", "\'");
     const result = await axios.post('http://localhost:5000/check', {
       // schema: "CREATE TABLE indiv_sample_nyc(\n cmte_id INT,\n transaction_amt INT,\n name VARCHAR(10),\n str_name VARCHAR(10)\n );",
       schema: createTableStatement,
-      ta_input: taSubmission,
-      student_input: studentSubmission
+      ta_input: taSubmissionMod,
+      student_input: studentSubmissionMod
     });
     console.log(result);
     let { status, test_log } = result.data;
@@ -114,9 +116,9 @@ export default function Home() {
                 </Dropdown.Menu>
               </Dropdown>
             
-              <Button variant="link" onClick={() => navigate("/templates")} >
+              {/* <Button variant="link" onClick={() => navigate("/templates")} >
                 Manage Templates
-              </Button>
+              </Button> */}
             </Stack>
           </Col>
           <Col>

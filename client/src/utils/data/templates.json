@@ -3,13 +3,61 @@
     "name": "QuestionA-1",
     "createTableStatement": "CREATE TABLE Customers(\n id INT,\n name VARCHAR(10)\n );\n\nCREATE TABLE Orders(\n id INT,\n customerId INT,\n price INT\n );",
     "taSubmission": "SELECT * FROM Customers WHERE name LIKE '%Smith';",
-    "studentSubmission": "SELECT * FROM Customers WHERE name LIKE '%Smith';"
+    "studentSubmission": ""
   },
   {
     "name": "QuestionA-2",
     "createTableStatement": "CREATE TABLE Customers(\n id INT,\n name VARCHAR(10)\n );\n\nCREATE TABLE Orders(\n id INT,\n customerId INT,\n price INT\n );",
     "taSubmission": "SELECT * FROM Customers LEFT JOIN Orders on Customers.id = Orders.customerId WHERE Orders.price > 2;",
-    "studentSubmission": "SELECT * FROM Customers LEFT JOIN Orders on Customers.id = Orders.customerId WHERE Orders.price > 2;"
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionA-3",
+    "createTableStatement": "CREATE TABLE Customers(\n id INT,\n name VARCHAR(10)\n );\n\nCREATE TABLE Orders(\n id INT,\n customerId INT,\n price INT\n );",
+    "taSubmission": "SELECT Customers.name, SUM(Orders.price) FROM Customers JOIN Orders ON Customers.id = Orders.customerId GROUP BY Customers.id;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionA-4",
+    "createTableStatement": "CREATE TABLE Student(\n id INT,\n name VARCHAR(10),\n age INT\n );\n\nCREATE TABLE MidtermScore(\n id INT,\n studentId INT,\n score INT\n );",
+    "taSubmission": "SELECT id FROM Student WHERE age = 19;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionA-5",
+    "createTableStatement": "CREATE TABLE Student(\n id INT,\n name VARCHAR(10),\n age INT\n );\n\nCREATE TABLE MidtermScore(\n id INT,\n studentId INT,\n score INT\n );",
+    "taSubmission": "SELECT Student.id FROM Student LEFT JOIN MidtermScore ON Student.id = MidtermScore.studentId WHERE MidtermScore.score < 90;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionB-1",
+    "createTableStatement": "CREATE TABLE Pets(\n ownerId INT,\n type VARCHAR(10),\n age INT\n );\n\nCREATE TABLE Owners(\n id INT,\n name VARCHAR(10),\n age INT\n );",
+    "taSubmission": "SELECT * FROM Owners WHERE name LIKE 'Chris%' AND age > 30;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionB-2",
+    "createTableStatement": "CREATE TABLE Pets(\n ownerId INT,\n type VARCHAR(10),\n age INT\n );\n\nCREATE TABLE Owners(\n id INT,\n name VARCHAR(10),\n age INT\n );",
+    "taSubmission": "SELECT Owners.name FROM Owners LEFT JOIN Pets ON Owners.id = Pets.ownerId WHERE Pets.age = 3;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionB-3",
+    "createTableStatement": "CREATE TABLE Pets(\n ownerId INT,\n type VARCHAR(10),\n age INT\n );\n\nCREATE TABLE Owners(\n id INT,\n name VARCHAR(10),\n age INT\n );",
+    "taSubmission": "SELECT Owners.id FROM Owners LEFT JOIN Pets ON Owners.id = Pets.ownerId GROUP BY Owners.id HAVING COUNT(Pets.ownerId) > 3;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionB-4",
+    "createTableStatement": "CREATE TABLE Instructor(\n id INT,\n name VARCHAR(10),\n schoolId INT\n );\n\nCREATE TABLE Course(\n id INT,\n name VARCHAR(10),\n averageScore INT,\n instructorId INT,\n schoolId INT\n );\n\nCREATE TABLE School(\n id INT,\n name VARCHAR(10)\n );",
+    "taSubmission": "SELECT Instructor.id FROM Instructor LEFT JOIN Course ON Instructor.id = Course.instructorId GROUP BY Instructor.id ORDER BY COUNT(*) DESC LIMIT 1;",
+    "studentSubmission": ""
+  },
+  {
+    "name": "QuestionB-5",
+    "createTableStatement": "CREATE TABLE Instructor(\n id INT,\n name VARCHAR(10),\n schoolId INT\n );\n\nCREATE TABLE Course(\n id INT,\n name VARCHAR(10),\n averageScore INT,\n instructorId INT,\n schoolId INT\n );\n\nCREATE TABLE School(\n id INT,\n name VARCHAR(10)\n );",
+    "taSubmission": "SELECT * FROM School LEFT JOIN Course ON School.id = Course.schoolId WHERE Course.averageScore = 70;",
+    "studentSubmission": ""
   },
   {
     "name": "Hello world",
